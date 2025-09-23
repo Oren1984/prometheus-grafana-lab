@@ -1,0 +1,7 @@
+# OS / editor
+.DS_Store
+*.swp
+.vscode/
+
+# kubectl local outputs (if any)
+*.out

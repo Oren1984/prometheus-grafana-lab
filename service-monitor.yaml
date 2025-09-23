@@ -1,0 +1,30 @@
+# service-monitor.yaml
+# ServiceMonitor for Prometheus (Helm release: prometheus) to scrape annotated services across all namespaces
+
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: annotated-services
+  namespace: monitoring        # Namespace where Prometheus Helm release is installed
+  labels:
+    release: prometheus        # Must match Helm release name (your release is "prometheus")
+spec:
+  namespaceSelector:
+    any: true                  # Allow scraping from all namespaces
+  selector:
+    matchExpressions:
+      - key: prometheus.io/scrape
+        operator: Exists       # Select services that include the prometheus.io/scrape annotation
+  endpoints:
+    - port: http               # Port name defined in the Service manifest (must match)
+      interval: 30s            # Scrape interval
+      path: /metrics           # Metrics path exposed by the Service
+      relabelings:
+        - action: keep
+          regex: "true"
+          sourceLabels: ["__meta_kubernetes_service_annotation_prometheus_io_scrape"]
+          # Keep only services where prometheus.io/scrape="true"
+        - action: replace
+          sourceLabels: ["__meta_kubernetes_service_annotation_prometheus_io_path"]
+          targetLabel: __metrics_path__
+          # Override metrics path if prometheus.io/path annotation is defined
