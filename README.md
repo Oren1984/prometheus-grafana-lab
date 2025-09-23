@@ -8,7 +8,7 @@ The goal: **Set up a lightweight monitoring stack** that shows system metrics wi
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 ```text
 [Kubernetes Cluster]
        │
