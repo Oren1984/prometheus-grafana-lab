@@ -1,48 +1,57 @@
-# 📊 Grafana + Prometheus Monitoring Lab
+# Grafana Prometheus Monitoring Lab
 
-## Overview
-This project demonstrates a minimal monitoring setup using **Prometheus** and **Grafana** on Kubernetes.  
-It includes installation instructions, dashboards, and screenshots of a working environment.
-
-The goal: **Set up a lightweight monitoring stack** that shows system metrics with ready-to-use Grafana dashboards.
+Minimal Kubernetes monitoring setup using Prometheus and Grafana.
 
 ---
 
-##  Architecture
-```text
-[Kubernetes Cluster]
-       │
-       ├── Prometheus (scraping metrics)
-       │
-       └── Grafana (visualizing metrics with dashboards)
+## Overview
 
+A lightweight monitoring lab that installs Prometheus for metrics collection and Grafana for visualization with ready-to-use dashboards.
 
-## 📂 Project Structure
-.
-├── README.md          # Main overview
-├── installation.md    # Full installation guide with commands
-├── images/            # Screenshots of the dashboards
+---
 
+## Tech Stack
 
-##  Installation
-Full installation guide is available here:
-👉 installation.md
+- Kubernetes
+- Prometheus
+- Grafana
 
+---
 
-##  Screenshots
-1. Import Dashboard
+## Quick Start
 
-2. Prometheus 2.0 Overview
+Follow the installation guide:
 
-3. Prometheus Stats & Discovery
+```bash
+# see installation.md for full steps
+```
 
+---
 
-## ✅ Status
+## Usage
 
-Prometheus installed and running
+- Access Grafana UI
 
-Grafana installed and connected to Prometheus
+- Connect to Prometheus as a data source
 
-Dashboards imported successfully
+- Import dashboards
 
-Basic monitoring operational 
+- View system metrics and monitoring data
+
+---
+
+## Cleanup
+
+Remove monitoring components from the cluster (if installed via manifests or Helm).
+
+---
+
+## Notes
+
+- Built for learning monitoring and observability basics
+
+- Includes screenshots under images/
+
+- Installation steps documented in installation.md
+
+---
